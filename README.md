@@ -1,19 +1,25 @@
 # JavaScript Interview Questions
 
-**What are the possible ways to create objects in JavaScript?**
+## What are the possible ways to create objects in JavaScript? 
 There are many ways to create objects in javascript as below,
 
 1.	**Object constructor:** The simplest way to create an empty object is using Object constructor. Currently this approach is not recommended.
 
-  	```var object = new Object();```
+  	```js
+	var object = new Object();
+	```
 
 2.	**Object's create method:** The create method of Object creates a new object by passing the prototype object as a parameter.
 
-  	```object = Object.create(null);```
+  	```js
+	object = Object.create(null);
+	```
 
 3.	**Object literal syntax:** The object literal syntax is equivalent to create method when it passes null as parameter.
 
-    ```var object = {};```
+    ```js
+    var object = {};
+    ```
     
 4.	**Function constructor:** Create any function and apply the new operator to create object instances,
 ```js
@@ -66,12 +72,12 @@ var object = new function(){
 	  this.name = "Vishal";
 	}
 ``` 
-**What is prototype chain?**
+## What is prototype chain?
 **Prototype chaining** is used to build new types of objects based on existing ones. It is similar to inheritance in a class based language. The prototype on object instance is available through Object.getPrototypeOf(object) or proto property whereas prototype on constructors function is available through object.prototype.
 
   Employee->Person->Object->Null
  
-What is the difference between Call, Apply and Bind?
+## What is the difference between Call, Apply and Bind?
 The difference between Call, Apply and Bind can be explained with below examples,
 
 **Call:** The call() method invokes a function with a given this value and arguments provided one by one
@@ -84,7 +90,7 @@ The difference between Call, Apply and Bind can be explained with below examples
 	}
   
 	invite.call(employee1, 'Hello', 'How are you?'); // Hello Vishal Kumar, How are you? 
-  invite.call(employee2, 'Hello', 'How are you?'); // Hello Ajay Nayak, How are you?
+  	invite.call(employee2, 'Hello', 'How are you?'); // Hello Ajay Nayak, How are you?
  ```
   
 **Apply:** Invokes the function and allows you to pass in arguments as an array
@@ -115,7 +121,7 @@ var employee1 = {firstName: 'Vishal', lastName: 'Kumar'};
 ```
 Call and apply are pretty interchangeable. Both execute the current function immediately. You need to decide whether it’s easier to send in an array or a comma separated list of arguments. You can remember by treating Call is for comma (separated list) and Apply is for Array. Whereas Bind creates a new function that will have this set to the first parameter passed to bind().
 
-**What is JSON and its common operations?**
+## What is JSON and its common operations?
 **JSON** is a text-based data format following JavaScript object syntax, which was popularized by *Douglas Crockford*. It is useful when you want to transmit data across a network and it is basically just a text file with an extension of .json, and a MIME type of application/json Parsing: Converting a string to a native object
 
 ```js
@@ -128,7 +134,7 @@ Stringification: converting a native object to a string so it can be transmitted
 JSON.stringify(object)
 ```
 
-**What is the purpose of array slice method?**
+## What is the purpose of array slice method?
 The **slice()** method returns the selected elements in an array as a new array object. It selects the elements starting at the given start argument, and ends at the given optional end argument without including the last element. If you omit the second argument then it selects till the end. Some of the examples of this method are,
 
 ```js
@@ -139,7 +145,7 @@ The **slice()** method returns the selected elements in an array as a new array 
 ```
 **Note:** Slice method won't mutate the original array but it returns the subset as new array.
 
-**How do you compare Object and Map?**
+## How do you compare Object and Map?
 Objects are similar to Maps in that both let you set keys to values, retrieve those values, delete keys, and detect whether something is stored at a key. Due to this reason, Objects have been used as Maps historically. But there are important differences that make using a Map preferable in certain cases.
 
 1.	The keys of an Object are Strings and Symbols, whereas they can be any value for a Map, including functions, objects, and any primitive.
@@ -154,7 +160,7 @@ Objects are similar to Maps in that both let you set keys to values, retrieve th
 
 6.	A Map may perform better in scenarios involving frequent addition and removal of key pairs.
 
-**What is the difference between == and === operators?**
+## What is the difference between == and === operators?
 JavaScript provides both strict(===, !==) and type-converting(==, !=) equality comparison. The strict operators takes type of variable in consideration, while non-strict operators make type correction/conversion based upon values of variables. The strict operators follow the below conditions for different types,
 
 1.	Two strings are strictly equal when they have the same sequence of characters, same length, and same characters in corresponding positions.
@@ -186,10 +192,10 @@ Some of the example which covers the above cases,
 	{}=={} or {}==={} //false, refer different objects in memory
 ```
 
-**What are lambda or arrow functions?**
+## What are lambda or arrow functions?
 An arrow function is a shorter syntax for a function expression and does not have its own this, arguments, super, or new.target. These function are best suited for non-method functions, and they cannot be used as constructors.
 
-**What is a first class function?**.
+## What is a first class function?
 In Javascript, functions are first class objects. First-class functions means when functions in that language are treated like any other variable.
 For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable. For example, in the below example, handler functions assigned to a listener
 
@@ -197,14 +203,14 @@ For example, in such a language, a function can be passed as an argument to othe
 	const handler = () => console.log ('This is a click handler function');
 	document.addEventListener ('click', handler);
 ```
-**What is a first order function?**
+## What is a first order function?
 First-order function is a function that doesn’t accept other function as an argument and doesn’t return a function as its return value.
 
 ```js
 const firstOrder = () => console.log ('I am a first order function!');
 ```
 
-**What is a higher order function?**
+## What is a higher order function?
 Higher-order function is a function that accepts other function as an argument or returns a function as a return value.
 
 ```js
@@ -213,13 +219,13 @@ Higher-order function is a function that accepts other function as an argument o
 	higherOrder (firstOrderFunc);
 ```
 
-**What is a unary function?**
+## What is a unary function?
 Unary function (i.e. monadic) is a function that accepts exactly one argument. Let us take an example of unary function. It stands for single argument accepted by a function.
 
 ```js
 const unaryFunction = a => console.log (a + 10); // Add 10 to the given argument and display the value
 ```
-**What is currying function?**
+## What is currying function?
 Currying is the process of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Currying is named after a mathematician Haskell Curry. By applying currying, a n-ary function turns it into a unary function. Let's take an example of n-ary function and how it turns into a currying function
 ```js
 	const multiArgFunction = (a, b, c) => a + b + c;
@@ -230,7 +236,7 @@ Currying is the process of taking a function with multiple arguments and turning
 ```
 Curried functions are great to improve code re-usability and functional composition.
 
-**What is a pure function?**
+## What is a pure function?
 A Pure function is a function where the return value is only determined by its arguments without any side effects. i.e, If you call a function with the same arguments 'n' number of times and 'n' number of places in the application then it will always return the same value. Let's take an example to see the difference between pure and impure functions,
 ```js
 	//Impure
@@ -248,3 +254,188 @@ A Pure function is a function where the return value is only determined by its a
 
 ```
 As per above code snippets, Push function is impure itself by altering the array and returning an push number index which is independent of parameter value. Whereas Concat on the other hand takes the array and concatenates it with the other array producing a whole new array without side effects. Also, the return value is a concatenation of previous array. Remember that Pure functions are important as they simplify unit testing without any side effects and no need for dependency injection. They also avoid tight coupling and makes harder to break your application by not having any side effects. These principles are coming together with Immutability concept of ES6 by giving preference to const over let usage.
+
+## What is the purpose of let keyword?
+The let statement declares a block scope local variable. Hence the variables defined with let keyword are limited in scope to the block, statement, or expression on which it is used. Whereas variables declared with the var keyword used to define a variable globally, or locally to an entire function regardless of block scope. Let's take an example to demonstrate the usage,
+
+```js
+let counter = 30;
+	if (counter === 30) {
+	  let counter = 31;
+	  console.log(counter); // 31
+	}
+	console.log(counter); // 30 (because if block variable won't exist here)
+```
+## What is the reason to choose the name let as keyword?
+Let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.
+
+## How do you redeclare variables in switch block without an error?
+
+```js
+	let counter = 1;
+	switch(x) {
+	  case 0:
+	    let name;
+	    break;
+	   case 1:
+	    let name; // SyntaxError for redeclaration.
+	    break;
+	}
+```
+To avoid this error, you can create a nested block inside a case clause will create a new block scoped lexical environment.
+
+```js
+	let counter = 1;
+	    switch(x) {
+	      case 0: {
+	        let name;
+	        break;
+	      }
+	      case 1: {
+	        let name; // No SyntaxError for redeclaration.
+	        break;
+	      }
+	    }
+```
+
+## What is Temporal Dead Zone?
+The Temporal Dead Zone is a behavior in JavaScript that occurs when declaring a variable with the let and const keywords, but not with var. In ECMAScript 6, accessing a let or const variable before its declaration (within its scope) causes a ReferenceError. The time span when that happens, between the creation of a variable’s binding and its declaration, is called the temporal dead zone. Let's see this behavior with an example,
+
+```js
+	function somemethod() {
+	  console.log(counter1); // undefined
+	  console.log(counter2); // ReferenceError
+	  var counter1 = 1;
+	  let counter2 = 2;
+	}
+```
+
+## What is IIFE(Immediately Invoked Function Expression)?
+IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined. The signature of it would be as below,
+
+```js
+	(function ()
+	    {
+	      // logic here
+	    }
+	 )
+	();
+```
+
+The primary reason to use an IIFE is to obtain data privacy because any variables declared within the IIFE cannot be accessed by the outside world. i.e, If you try to access variables with IIFE then it throws an error as below,
+
+```js
+	(function ()
+	        {
+	          var message = "IIFE";
+	          console.log(message);
+	        }
+	 )
+	();
+	console.log(message); //Error: message is not defined
+```
+## What is the benefit of using modules?
+There are a lot of benefits to using modules in favour of a sprawling. Some of the benefits are,
+1.	Maintainablity
+2.	Reusability
+3.	Namespacing
+
+## What is memoization?
+Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned, without executing the entire function. Otherwise the function is executed and then the result is added to the cache. Let's take an example of adding function with memoization,
+
+```js
+	const memoizAddition = () => {
+	  let cache = {};
+	 return (value) => {
+	  if (value in cache) {
+	   console.log('Fetching from cache');
+	   return cache[value]; //Here, cache.value cannot be used as property name starts with the number which is not valid JavaScript  identifier. Hence, can only be 					  accessed using the square bracket notation.
+	  } else {
+	   console.log('Calculating result');
+	   let result = value + 20;
+	   cache[value] = result;
+	   return result;
+	  }
+	 }
+	}
+	// returned function from memoizAddition
+	const addition = memoizAddition();
+	console.log(addition(20)); //output: 40 calculated
+	console.log(addition(20)); //output: 40 cached
+
+```
+
+## What is Hoisting?
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Remember that JavaScript only hoists declarations, not initialisation. Let's take a simple example of variable hoisting,
+
+``js
+	console.log(message); //output : undefined
+	var message = 'The variable Has been hoisted';
+```
+The above code looks like as below to the interpreter,
+
+```js
+	var message;
+	console.log(message);
+	message = 'The variable Has been hoisted';
+```
+
+## What are classes in ES6?
+In ES6, Javascript classes are primarily syntactical sugar over JavaScript’s existing prototype-based inheritance. For example, the prototype based inheritance written in function expression as below,
+
+```js
+	function Bike(model,color) {
+	    this.model = model;
+	    this.color = color;
+	}
+	 
+	Bike.prototype.getDetails = function() {
+	    return this.model + ' bike has' + this.color + ' color';
+	};
+```
+Whereas ES6 classes can be defined as an alternative
+
+```js
+	class Bike{
+	  constructor(color, model) {
+	    this.color= color;
+	    this.model= model;
+	  }
+	 
+	  getDetails() {
+	    return this.model + ' bike has' + this.color + ' color';
+	  }
+	}
+```
+
+## What are closures?
+A closure is the combination of a function and the lexical environment within which that function was declared. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains
+
+1.	Own scope where variables defined between its curly brackets
+
+2.	Outer function’s variables
+
+3.	Global variables Let's take an example of closure concept,
+
+```js
+	function Welcome(name){
+	  var greetingInfo = function(message){
+	   console.log(message+' '+name);
+	  }
+	return greetingInfo;
+	}
+	var myFunction = Welcome('John');
+	myFunction('Welcome '); //Output: Welcome John
+	myFunction('Hello Mr.'); //output: Hello Mr.John
+```
+As per the above code, the inner function(greetingInfo) has access to the variables in the outer function scope(Welcome) even after outer function has returned.
+
+## What are modules?
+Modules refers small units of independent, reusable code and also act as foundation of many JavaScript design patterns. Most of the JavaScript modules export an object literal, a function, or a constructor
+
+## Why do you need modules?
+Below are the list of benefits using modules in javascript ecosystem
+1.	Maintainablity
+2.	Reusability
+3.	Namespacing
+
