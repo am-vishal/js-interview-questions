@@ -349,7 +349,7 @@ Memoization is a programming technique which attempts to increase a function’s
 	 return (value) => {
 	  if (value in cache) {
 	   console.log('Fetching from cache');
-	   return cache[value]; //Here, cache.value cannot be used as property name starts with the number which is not valid JavaScript  identifier. Hence, can only be 					  accessed using the square bracket notation.
+	   return cache[value]; //Here, cache.value cannot be used as property name starts with the number which is not valid JavaScript  identifier. Hence, can only be accessed using the square bracket notation.
 	  } else {
 	   console.log('Calculating result');
 	   let result = value + 20;
@@ -368,7 +368,7 @@ Memoization is a programming technique which attempts to increase a function’s
 ## What is Hoisting?
 Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Remember that JavaScript only hoists declarations, not initialisation. Let's take a simple example of variable hoisting,
 
-``js
+```js
 	console.log(message); //output : undefined
 	var message = 'The variable Has been hoisted';
 ```
@@ -430,12 +430,666 @@ A closure is the combination of a function and the lexical environment within wh
 ```
 As per the above code, the inner function(greetingInfo) has access to the variables in the outer function scope(Welcome) even after outer function has returned.
 
+## What is a “closure” in JavaScript? Provide an example.
+A closure is a function defined inside another function (called the parent function), and has access to variables that are declared and defined in the parent function scope.
+The closure has access to variables in three scopes:<br/>
+•	Variables declared in their own scope<br/>
+•	Variables declared in a parent function scope<br/>
+•	Variables declared in the global namespace<br/>
+
+```js
+	var globalVar = "abc"; 
+	// Parent self invoking function 
+	(function outerFunction (outerArg) { // begin of scope outerFunction
+	    // Variable declared in outerFunction function scope 
+	    var outerFuncVar = 'x';    
+	    // Closure self-invoking function 
+	    (function innerFunction (innerArg) { // begin of scope innerFunction
+	        // variable declared in innerFunction function scope
+	        var innerFuncVar = "y"; 
+	        console.log(          
+	            "outerArg = " + outerArg + "\n" +
+	            "outerFuncVar = " + outerFuncVar + "\n" +
+	            "innerArg = " + innerArg + "\n" +
+	            "innerFuncVar = " + innerFuncVar + "\n" +
+	            "globalVar = " + globalVar);
+	 
+	    }// end of scope innerFunction)(5); // Pass 5 as parameter 
+	}// end of scope outerFunction )(7); // Pass 7 as parameter 
+
+```
+<ins>innerFunction</ins> is closure that is defined inside <ins>outerFunction</ins> and has access to all variables declared and defined in the <ins>outerFunction</ins> scope. In addition, the function defined inside another function as a closure will have access to variables declared in the <ins>global namespace</ins>.
+
+Thus, the output of the code above would be:
+
+```js
+	outerArg = 7
+	outerFuncVar = x
+	innerArg = 5
+	innerFuncVar = y
+	globalVar = abc
+```
+
+**Example:2**
+
+**#recursive #async**
+
+💡A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
+
+```js
+	var x = 1;
+	(function(y) {
+	    var i = "i";
+	    console.log("i:" + i);
+	    console.log("x:" + x);
+	    console.log("y:" + y);
+	    (function(z) {
+	        var j = "j";
+	        console.log("i:" + i);
+	        console.log("j:" + j);
+	        console.log("x:" + x);
+	        console.log("y:" + y);
+	        console.log("z:" + z);
+	    })(3);
+	})(2);
+```
+
 ## What are modules?
 Modules refers small units of independent, reusable code and also act as foundation of many JavaScript design patterns. Most of the JavaScript modules export an object literal, a function, or a constructor
 
-## Why do you need modules?
-Below are the list of benefits using modules in javascript ecosystem
-1.	Maintainablity
-2.	Reusability
-3.	Namespacing
+## What is scope in javascript?
+Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.
 
+## What is a service worker?
+A Service worker is basically a script (JavaScript file) that runs in background, separate from a web page and provide features that don't need a web page or user interaction. Some of the major features of service workers are Rich offline experiences(offline first web application development), periodic background syncs, push notifications, intercept and handle network requests and programmatically managing a cache of responses.
+
+## How do you manipulate DOM using service worker?
+Service worker can't access the DOM directly. But it can communicate with the pages it controls by responding to messages sent via the ***postMessage*** interface, and those pages can manipulate the DOM.
+
+## What is a post message?
+Post message is a method that enables cross-origin communication between Window objects.(i.e, between a page and a pop-up that it spawned, or between a page and an iframe embedded within it). Generally, scripts on different pages are allowed to access each other if and only if the pages follow same-origin policy(i.e, pages share the same protocol, port number, and host).
+
+## How do you reuse information across service worker restarts?
+The problem with service worker is that it get terminated when not in use, and restarted when it's next needed, so you cannot rely on global state within a service worker's ***onfetch*** and ***onmessage*** handlers. In this case, service workers will have access to IndexedDB API in order to persist and reuse across restarts.
+
+## What is IndexedDB?
+IndexedDB is a low-level API for client-side storage of larger amounts of structured data, including files/blobs. This API uses indexes to enable high-performance searches of this data.
+
+## What is web storage?
+Web storage is an API that provides a mechanism by which browsers can store key/value pairs locally within the user's browser, in a much more intuitive fashion than using cookies. The web storage provides two mechanisms for storing data on the client.
+1.	**Local storage:** It stores data for current origin with no expiration date.
+2.	**Session storage:** It stores data for one session and the data is lost when the browser tab is closed.
+
+___
+
+## Why do you need a Cookie?
+Cookies are used to remember information about the user profile(such as username). It basically involves two steps,
+
+1.	When a user visits a web page, user profile can be stored in a cookie.
+
+2.	Next time the user visits the page, the cookie remembers user profile.
+
+3.	**What are the options in a cookie?**
+	 There are few below options available for a cookie,
+	  1. By default, the cookie is deleted when the browser is closed but you can change this behavior by setting expiry date (in UTC time).
+	  2. document.cookie = "username=John expires=Sat, 8 Jun 2019 12:00:00 UTC";
+	  3. By default, the cookie belongs to a current page. But you can tell the browser what path the cookie belongs to using a path parameter.
+	  4. document.cookie = "username=John path=/services";
+	  
+4.	How do you delete a cookie?
+	You can delete a cookie by setting the expiry date as a passed date. You don't need to specify a cookie value in this case. For example, you can delete a username cookie in the current page as below.
+```js
+	document.cookie = "username=; expires=Fri, 07 Jun 2019 00:00:00 UTC; path=/;";
+```
+**Note:** You should define the cookie path option to ensure that you delete the right cookie. Some browsers doesn't allow to delete a cookie unless you specify a path parameter.
+
+## What is the main difference between local Storage and session Storage?
+LocalStorage is same as SessionStorage but it persists the data even when the browser is closed and reopened(i.e it has no expiration time) whereas in sessionStorage data gets cleared when the page session ends.
+<br/>
+## How do you access web storage?
+The Window object implements the ***WindowLocalStorage*** and ***WindowSessionStorage*** objects which has ***localStorage***(window.localStorage) and ***sessionStorage***(window.sessionStorage) properties respectively. These properties create an instance of the Storage object, through which data items can be set, retrieved and removed for a specific domain and storage type (session or local). For example, you can read and write on local storage objects as below
+```js
+	localStorage.setItem('logo', document.getElementById('logo').value);
+	localStorage.getItem('logo');
+```
+
+## What are the methods available on session storage?
+The session storage provided methods for reading, writing and clearing the session data
+```js
+	// Save data to sessionStorage
+	sessionStorage.setItem('key', 'value');
+	 
+	// Get saved data from sessionStorage
+	let data = sessionStorage.getItem('key');
+	 
+	// Remove saved data from sessionStorage
+	sessionStorage.removeItem('key');
+	 
+	// Remove all saved data from sessionStorage
+	sessionStorage.clear();
+```
+## What is a storage event and its event handler?
+The StorageEvent is an event that fires when a storage area has been changed in the context of another document. Whereas onstorage property is an EventHandler for processing storage events. The syntax would be as below
+```js
+	 window.onstorage = functionRef;
+```
+Let's take the example usage of onstorage event handler which logs the storage key and it's values
+```js	window.onstorage = function(e) {
+	  console.log('The ' + e.key +
+	    ' key has been changed from ' + e.oldValue +
+	    ' to ' + e.newValue + '.');
+	};
+```
+
+## Why do you need web storage?
+Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance. Also, the information is never transferred to the server. Hence this is recommended approach than Cookies.
+
+## How do you check web storage browser support?
+You need to check browser support for localStorage and sessionStorage before using web storage,
+```js
+	if (typeof(Storage) !== "undefined") {
+	  // Code for localStorage/sessionStorage.
+	} else {
+	  // Sorry! No Web Storage support..
+	}
+```
+
+## How do you check web workers browser support?
+You need to check browser support for web workers before using it
+```js
+	if (typeof(Worker) !== "undefined") {
+	  // code for Web worker support.
+	} else {
+	  // Sorry! No Web Worker support..
+	}
+```
+
+## Give an example of web worker?
+You need to follow below steps to start using web workers for counting example
+1.	Create a Web Worker File: You need to write a script to increment the count value. Let's name it as counter.js
+
+```js
+	let i = 0;
+	function timedCount() {
+	  i = i + 1;
+	  postMessage(i);
+	  setTimeout("timedCount()",500);
+	}
+	 
+	timedCount();
+```
+
+Here *postMessage()* method is used to post a message back to the HTML page.
+<br/>
+
+2. Create a Web Worker Object: You can create a web worker object by checking for browser support. Let's name this file as web_worker_example.js
+
+```js
+	if (typeof(w) == "undefined") {
+	  w = new Worker("counter.js");
+	}
+```
+
+and we can receive messages from web worker
+
+```js
+	w.onmessage = function(event){
+	  document.getElementById("message").innerHTML = event.data;
+	};
+```
+
+Terminate a Web Worker: Web workers will continue to listen for messages (even after the external script is finished) until it is terminated. You can use terminate() method to terminate listening the messages.
+
+```js
+	w.terminate();
+```
+
+	Reuse the Web Worker: If you set the worker variable to undefined you can reuse the code
+	
+```js
+	w = undefined;
+```
+
+## What are the restrictions of web workers on DOM?
+WebWorkers don't have access to below javascript objects since they are defined in an external files
+
+1.	Window object
+2.	Document object
+3.	Parent object
+
+## What is the difference between undefined and not defined in JavaScript?
+
+In JavaScript, if you try to use a variable that doesn't exist and has not been declared, then JavaScript will throw an error var name is not defined and script will stop executing. However, if you use typeof undeclared_variable, then it will return undefined.
+<br/>
+Before getting further into this, let's first understand the difference between declaration and definition.
+<br/>
+Let's say var x is a declaration because you have not defined what value it holds yet, but you have declared its existence and the need for memory allocation.
+<br/>
+
+```js
+	var x; // declaring x
+	console.log(x); //output: undefined 
+```
+
+Here *var x = 1* is both a declaration and definition (also we can say we are doing an initialisation). In the example above, the declaration and assignment of value happen inline for variable x. In JavaScript, every variable or function declaration you bring to the top of its current scope is called *hoisting*.
+<br/>
+The assignment happens in order, so when we try to access a variable that is declared but not defined yet, we will get the result undefined.
+
+```js
+	var x; // Declaration
+	if(typeof x === 'undefined') // Will return true
+```
+If a variable that is neither declared nor defined, when we try to reference such a variable we'd get the result *not defined*.
+
+```js
+	console.log(y);  // Output: ReferenceError: y is not defined
+```
+
+**What will be the output of the code below?**
+
+```js
+	var y = 1;
+	  if (function f(){}) {
+	    y += typeof f;
+	  }
+	  console.log(y);
+```
+
+The output would be *1undefined*. The if condition statement evaluates using *eval*, so *eval(function f(){})* returns *function f(){}* (which is true). Therefore, inside the *if* statement, executing *typeof f* returns *undefined* because the *if* statement code executes at run time, and the statement inside the *if* condition is evaluated during run time.
+
+```js
+	var k = 1;
+	  if (1) {
+	    eval(function foo(){});
+	    k += typeof foo;
+	  }
+	  console.log(k); 
+```
+
+The code above will also output 1undefined.
+
+```js
+	var k = 1;
+	  if (1) {
+	    function foo(){};
+	    k += typeof foo;
+	  }
+	  console.log(k); // output 1function
+```
+
+## What is the drawback of creating true private methods in JavaScript?
+One of the drawbacks of creating true private methods in JavaScript is that they are very memory-inefficient, as a new copy of the method would be created for each instance.
+
+```js
+	var Employee = function (name, company, salary) {
+	    this.name = name || "";       //Public attribute default value is null
+	    this.company = company || ""; //Public attribute default value is null
+	    this.salary = salary || 5000; //Public attribute default value is null
+	 
+	    // Private method
+	    var increaseSalary = function () {
+	        this.salary = this.salary + 1000;
+	    };
+	 
+	    // Public method
+	    this.dispalyIncreasedSalary = function() {
+	        increaseSlary();
+	        console.log(this.salary);
+	    };
+	};
+	 
+	// Create Employee class object
+	var emp1 = new Employee("John","Pluto",3000);
+	// Create Employee class object
+	var emp2 = new Employee("Merry","Pluto",2000);
+	// Create Employee class object
+	var emp3 = new Employee("Ren","Pluto",2500);
+	
+```
+Here each instance variable *emp1*, *emp2*, *emp3* has its own copy of the *increaseSalary* private method.
+So, as a recommendation, don’t use private methods unless it’s necessary.
+
+## Write a mul function which will produce the following outputs when invoked:
+
+```js
+	console.log(mul(2)(3)(4)); // output : 24 
+	console.log(mul(4)(3)(4)); // output : 48
+```
+Below is the answer followed by an explanation to how it works:
+
+```js
+	function mul (x) {
+	    return function (y) { // anonymous function 
+	        return function (z) { // anonymous function 
+	            return x * y * z; 
+	        };
+	    };
+	}
+```
+Here the mul function accepts the first argument and returns an anonymous function, which takes the second parameter and returns another anonymous function that will take the third parameter and return the multiplication of the arguments that have been passed.
+In JavaScript, a function defined inside another one has access to the outer function's variables. Therefore, a function is a first-class object that can be returned by other functions as well and be passed as an argument in another function.<br/><br/>
+•	A function is an instance of the Object type.<br/><br/>
+•	A function can have properties and has a link back to its constructor method.<br/><br/>
+•	A function can be stored as a variable.<br/><br/>
+•	A function can be pass as a parameter to another function.<br/><br/>
+•	A function can be returned from another function.<br/><br/>
+___
+
+## What is a potential pitfall with using *typeof bar === "object"* to determine if bar is an object? How can this pitfall be avoided?
+typeof null is object
+
+```js
+	(bar !== null) && (typeof bar === "object")
+```
+**What will the code below output to the console and why?**
+<br/>
+```js
+	(function(){
+	  var a = b = 3;
+	})();
+	 
+	console.log("a defined? " + (typeof a !== 'undefined'));
+	console.log("b defined? " + (typeof b !== 'undefined'));
+```
+b be defined outside of the scope of the enclosing function, try "use strict"; to reveal error.
+
+```js
+	a defined? false
+	b defined? true
+```
+
+**What will the code below output to the console and why?**
+
+```js
+	var myObject = {
+	    foo: "bar",
+	    func: function() {
+	        var self = this;
+	        console.log("outer func:  this.foo = " + this.foo);
+	        console.log("outer func:  self.foo = " + self.foo);
+	        (function() {
+	            console.log("inner func:  this.foo = " + this.foo);
+	            console.log("inner func:  self.foo = " + self.foo);
+	        }());
+	    }
+	};
+	myObject.func();
+```
+'this' is inner function which foo never defined
+```js
+	outer func:  this.foo = bar
+	outer func:  self.foo = bar
+	inner func:  this.foo = undefined
+	inner func:  self.foo = bar
+```
+## What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?
+Avoid conflict from other modules and libraries e.g.
+```js
+	// pass jQuery in as $
+	(function($) { /* $ can be use */ } )(jQuery);
+```
+or with ready **#noConflict**
+```js
+	// release $ from other
+	$.noConflict();
+	// wait for document reay and accept argument as $ and use it
+	jQuery(document).ready(function($){/* $ can be use */});
+```
+## What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
+
+💡It's best practice to be more strict instead of failed silently.<br/><br/>
+•	Makes debugging easier : Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions, alerting you sooner to problems in your code and directing you more quickly to their source.<br/><br/>
+•	Prevents accidental globals : Without strict mode, assigning a value to an undeclared variable automatically creates a global variable with that name. This is one of the most common errors in JavaScript. In strict mode, attempting to do so throws an error.<br/><br/>
+•	Eliminates this coercion : Without strict mode, a reference to a this value of null or undefined is automatically coerced to the global. This can cause many headfakes and pull-out-your-hair kind of bugs. In strict mode, referencing a this value of null or undefined throws an error.<br/><br/>
+•	Disallows duplicate property names or parameter values : Strict mode throws an error when it detects a duplicate named property in an object (e.g., var object = {foo: "bar", foo: "baz"};) or a duplicate named argument for a function (e.g., function foo(val1, val2, val1){}), thereby catching what is almost certainly a bug in your code that you might otherwise have wasted lots of time tracking down.<br/><br/>
+•	Makes eval() safer : There are some differences in the way eval() behaves in strict mode and in non-strict mode. Most significantly, in strict mode, variables and functions declared inside of an eval() statement are not created in the containing scope (they are created in the containing scope in non-strict mode, which can also be a common source of problems).<br/><br/>
+•	Throws error on invalid usage of delete : The delete operator (used to remove properties from objects) cannot be used on non-configurable properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.<br/><br/>
+
+## Consider the two functions below. Will they both return the same thing? Why or why not?
+```js
+	function foo1()
+	{
+	  return {
+	      bar: "hello"
+	  };
+	}
+	 
+	function foo2()
+	{
+	  return
+	  {
+	      bar: "hello"
+	  };
+	}
+	 
+	console.log("foo1 : " + foo1());
+	console.log("foo2 : " + foo2());
+```
+💡It'll see as return; because **;** are optional
+```js
+	foo1 :[object Object]
+	foo2 : undefined
+```
+## What is NaN? What is its type? How can you reliably test if a value is equal to NaN?
+
+💡Stand for Not a Number but beware typeof NaN === "number" is true
+
+```js
+	isNaN(NaN);       // true
+	isNaN(undefined); // true
+	isNaN({});        // true
+	 
+	isNaN(true);      // false
+	isNaN(null);      // false
+	isNaN(37);        // false
+	 
+	// strings
+	isNaN("37");      // false: "37" is converted to the number 37 which is not NaN
+	isNaN("37.37");   // false: "37.37" is converted to the number 37.37 which is not NaN
+	isNaN("");        // false: the empty string is converted to 0 which is not NaN
+	isNaN(" ");       // false: a string with spaces is converted to 0 which is not NaN
+	 
+	// dates
+	isNaN(new Date());                // false
+	isNaN(new Date().toString());     // true
+	 
+	// This is a false positive and the reason why isNaN is not entirely reliable
+	isNaN("blabla")   // true: "blabla" is converted to a number. 
+	 
+	// extra point for ES6
+	Number.isNaN(NaN);
+```
+## What will the code below output? Explain your answer.
+
+```js
+	console.log(0.1 + 0.2);
+	console.log(0.1 + 0.2 == 0.3);
+```
+💡Stand for Not a Number but beware typeof NaN === "number" is true
+
+```js
+	0.30000000000000004
+	false
+```
+## Discuss possible ways to write a function isInteger(x) that determines if x is an integer.
+
+**#pitfall #Number #Integer**
+
+💡ES6 not provide **Number.isInteger()**
+
+```js
+	function isInteger(x) { return Math.round(x) === x; }
+```
+
+## In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+
+```js
+	(function() {
+	    console.log(1); 
+	    setTimeout(function(){console.log(2)}, 1000); 
+	    setTimeout(function(){console.log(3)}, 0); 
+	    console.log(4);
+	})();
+```
+
+**#pitfall #async**
+
+💡Async will do thing after inline code.
+
+```js
+	1
+	4
+	3
+	2
+```
+## Write a simple function (less than 80 characters) that returns a boolean indicating whether or not a string is a palindrome.
+
+💡Check word == reversed_word
+
+```js
+	function isPalindrome(str) {
+	    // trim non word and make it lower case
+	    str = str.replace(/\W/g, '').toLowerCase();
+	    // compare with reversed text
+	    return (str == str.split('').reverse().join(''));
+	}
+	console.log(isPalindrome("level"));                   // logs 'true'
+	console.log(isPalindrome("levels"));                  // logs 'false'
+	console.log(isPalindrome("A car, a man, a maraca"));  // logs 'true'
+```
+## Write a sum method which will work properly when invoked using either syntax below.
+
+```js
+	console.log(sum(2,3));   // Outputs 5
+	console.log(sum(2)(3));  // Outputs 5
+```
+
+**#algorithm #arguments #functional**
+
+
+💡Use functional programming
+
+```js
+	function sum(x) {
+	  if (arguments.length == 2) {
+	    return arguments[0] + arguments[1];
+	  } else {
+	    return function(y) { return x + y; };
+	  }
+	}
+```
+***or***
+
+```js
+	function sum(x, y) {
+	  if (y !== undefined) {
+	    return x + y;
+	  } else {
+	    return function(y) { return x + y; };
+	  }
+	}
+```
+## Consider the following code snippet:
+
+```js
+	for (var i = 0; i < 5; i++) {
+	  var btn = document.createElement('button');
+	  btn.appendChild(document.createTextNode('Button ' + i));
+	  btn.addEventListener('click', function(){ console.log(i); });
+	  document.body.appendChild(btn);
+	}
+```
+
+(a) What gets logged to the console when the user clicks on “Button 4” and why? <br/>
+(b) Provide one or more alternate implementations that will work as expected.
+
+**#closure #scope**
+
+💡i is 5 forever, need input i to closure function.
+
+```js
+	...
+	(function (i) {
+	  btn.addEventListener('click', function() { console.log(i); });
+	})(i);
+	...
+```
+## What will the code below output to the console and why?
+
+**#array #referrence**
+
+```js
+	var arr1 = "john".split('');
+	var arr2 = arr1.reverse();
+	var arr3 = "jones".split('');
+	arr2.push(arr3);
+	console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+	console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+```
+💡Here's what happen. *silce(-1)* will pick 1 item backward which is *arr3*
+
+```js
+	var arr1 = "john".split('');    // arr1 = ["j","o","h","n"]
+	var arr2 = arr1.reverse();      // arr2 = arr1 = ["n","h","o","j"]
+	var arr3 = "jones".split('');   // arr3 = ["j","o","n","e","s"]
+	arr2.push(arr3);                // arr2 = arr1 = ["n","h","o","j",[,"j","o","n","e","s"]]
+```
+*Output*
+
+```js
+	array 1: length=5 last=j,o,n,e,s
+	array 2: length=5 last=j,o,n,e,s
+```
+## What will the code below output to the console and why ?
+
+**#String #Number #operation**
+
+```js
+	console.log(1 +  "2" + "2");
+	console.log(1 +  +"2" + "2");
+	console.log(1 +  -"1" + "2");
+	console.log(+"1" +  "1" + "2");
+	console.log( "A" - "B" + "2");
+	console.log( "A" - "B" + 2);
+
+```
+💡Rules : 1 + "2" = "12" and -"1" = -1 also last one will judge type
+
+```js
+	122
+	32
+	02
+	112
+	NaN2
+	NaN
+```
+## The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
+
+**#recursive #async**
+
+```js
+	var list = readHugeList();
+	 
+	var nextListItem = function() {
+	    var item = list.pop();
+	 
+	    if (item) {
+	        // process the list item...
+	        nextListItem();
+	    }
+	};
+```
+💡Delay funcation call by *setTimeout*
+
+```js
+	var list = readHugeList();
+	 
+	var nextListItem = function() {
+	    var item = list.pop();
+	 
+	    if (item) {
+	        // process the list item...
+	        setTimeout( nextListItem, 0);
+	    }
+	};
+```
