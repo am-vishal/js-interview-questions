@@ -1093,3 +1093,97 @@ or with ready **#noConflict**
 	    }
 	};
 ```
+___
+
+# OOP Theory
+## What is Object Oriented Programming (OOP)? 
+OOP focuses on the objects that developers want to manipulate rather than the logic required to manipulate them. This approach to programming is well-suited for programs that are large, complex and actively updated or maintained. 
+<br/>
+Object Oriented programming (OOP) is a programming paradigm that includes or relies on the concept of classes and objects. It is used to structure a software program into simple, reusable pieces of code blueprints (usually called classes) which are used to create individual instances of objects. 
+
+<br/>
+
+## What is an OOPL?
+The object-oriented paradigm is based on the classes and objects where objects are the instances of the classes and can be created in different ways. There are different object-oriented programming languages such as Javascript,C++, C#, PHP, Ruby, Java, Python, etc.
+
+<br/>
+
+**Object means a real-world entity such as a pen, chair, table, computer, watch, etc. Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies software development and maintenance by providing some concepts: **
+
+<br/>
+
+1. Object 
+
+2. Class 
+
+3. Inheritance 
+
+4. Polymorphism 
+
+5. Abstraction 
+
+6. Encapsulation 
+
+## What is an Object? 
+Any entity that has state and behavior is known as an object. For example, a chair, pen, table, keyboard, bike, etc. It can be physical or logical.
+<br/>
+An Object can be defined as an instance of a class. An object contains an address and takes up some space in memory. Objects can communicate without knowing the details of each other's data or code. The only necessary thing is the type of message accepted and the type of response returned by the objects. 
+<br/>
+*Example: A dog is an object because it has states like color, name, breed, etc. as well as behaviors like wagging the tail, barking, eating, etc.*
+
+## What is Class? 
+CLASS are a blueprint or a set of instructions to build a specific type of object. It is a basic concept of Object-Oriented Programming which revolve around the real-life entities. Class in JavaScript determines how an object will behave and what the object will contain. 
+
+In object-oriented programming, a class is a blueprint for creating objects (a particular data structure), providing initial values for state (member variables or attributes), and implementations of behavior (member functions or methods). 
+
+![alt text](https://i.postimg.cc/mDD7Wkwr/Untitled.png)
+
+<br/>
+
+```diff
+- The image above shows how a Car object can be the template for many other Car instances. In the image, there are three instances: polo, mini, and beetle. Here, we will make a new class called Car, that will structure a Car object to contain information about the car’s model, the color, how many passengers it can hold, its speed, etc. A class can define types of operations, or methods, that can be performed on a Car object. For example, the Car class might specify an accelerate method, which would update the speed attribute of the car object. 
+```
+## What is the Difference Between Object & Class? 
+
+<br/>
+
+A class is a blueprint or prototype that defines the variables and the methods (functions) common to all objects of a certain kind. 
+An object is a specimen of a class. Software objects are often used to model real-world objects you find in everyday life. 
+
+## Why We Use OOP? 
+<br/>
+OOP makes code organized, reusable, and easy to maintain; It follows the DRY method (Don’t Repeat Yourself). Benefits of OOP include security; OOP prevents unwanted access to data, or exposing proprietary code through encapsulation and abstraction - both are discussed further in the Principles of OOP. 
+
+So how do programmers create Object Oriented programs? Well the short answer is by making classes, and creating objects from the classes. In OOP everything is an object. Classes form the blueprint for how data & behaviors are structured. 
+ 
+Objects are created for specific instances of a class. As a programmer, you might create a dog class (blueprint) as a standard way to organize all the important information about dogs, and then instantiate an individual dog as an object created from the dog class - like your dog Fluffy. 
+<br/>
+**Building blocks of OOP**
+<br/>
+Assuming you’ve got a limited familiarity with JavaScript, the code building blocks to build an OOP program we’ll discuss are: 
+```diff
+- classes     objects      methods    attributes 
+```
+![alt text](https://i.postimg.cc/zvN7Z8V2/bp.png)
+
+```js
+	//Object of one individual dog 
+	var name = { 
+	name: "Vishal", 
+	birthday: "9/05/1998", 
+	age: function() { 
+	return Date.now() - this.birthday; 
+			}, 
+	attendance: 0 
+	} 
+
+	//Object of second individual dog 
+	var name = { 
+	name: "Ajay", 
+	birthday: "07/02/1997", 
+	age: function() { 
+		return Date.now() - this.birthday; 
+			}, 
+	attendance: 0 
+	} 
+```
