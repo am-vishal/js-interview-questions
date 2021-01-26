@@ -1136,7 +1136,7 @@ CLASS are a blueprint or a set of instructions to build a specific type of objec
 
 In object-oriented programming, a class is a blueprint for creating objects (a particular data structure), providing initial values for state (member variables or attributes), and implementations of behavior (member functions or methods). 
 
-![alt text](https://i.postimg.cc/mDD7Wkwr/Untitled.png)
+![class](https://i.postimg.cc/mDD7Wkwr/Untitled.png)
 
 <br/>
 
@@ -1164,7 +1164,7 @@ Assuming you’ve got a limited familiarity with JavaScript, the code building b
 ```diff
 - classes     objects      methods    attributes 
 ```
-![alt text](https://i.postimg.cc/zvN7Z8V2/bp.png)
+![oop](https://i.postimg.cc/zvN7Z8V2/bp.png)
 
 ```js
 	//Object of one individual dog 
@@ -1195,6 +1195,8 @@ The history object of a browser can be used to switch to history pages such as b
 * history.go(number) - The number may be positive for forward, negative for backward. It loads the given page number.
 
 ## Here is a list of most common array methods in JavaScript.
+
+![array methods](https://www.tutsmake.com/wp-content/uploads/2019/03/JavaScript-Array-Methods.jpeg)
 
 ```js
 // Mutating
@@ -1332,16 +1334,40 @@ const slicedArray = array.slice(0, 2)
 // slicedArray = [1, 2]
 ```
 <br/>
-
 **concat()**
 <br/>
 *concat* method will create a new array containing all the elements in the original array followed by the each of the arrays that are passed in. This method will not mutate the original array.
 <br/>
 *Note:* You can pass in more than one array as arguments.
-
 ```js
 const array = [1, 2, 3, 4]
 const concatArray = array.concat([5, 6, 7, 8])
 // array = [1, 2, 3, 4]
 // concatArray = [1, 2, 3, 4, 5, 6, 7, 8]
+```
+<br/>
+**toString()**
+<br/>
+```js
+var lang = ["PHP", "Python", "Java", "C"];
+lang.toString();
+//output
+PHP, Python, Java, C
+```
+<br/>
+**splice()**
+<br/>
+The javascript *splice()* method is used to add and remove items from an array.
+<br/>
+```js
+array.splice(index, howMany, [element1][, …, elementN]);
+index − Index param specifies where a new item should be inserted.
+howMany − An integer indicating the number of old array elements to remove.
+If howMany set to 0, no items will be removed in array list.
+
+var lang = ["Python", "Java", "C"];
+lang.splice(1, 0, "Javascript", "Rust"); 
+
+// Output
+new array: Python, Javascript, Rust, Java, C
 ```
