@@ -1326,7 +1326,6 @@ const result = array.reduce((accumulator, current) => (
 *slice* method will create a new array with elements from the index range passed in. In the example above, we specify the start index (0) and the end index (2) which gives us a new array [1, 2]. Also, notice that the original array isn’t mutated.
 <br/>
 *Note:* End index is exclusive which means that the element at that end index isn’t included in the new array.
-
 ```js
 const array = [1, 2, 3, 4]
 const slicedArray = array.slice(0, 2)
@@ -1334,11 +1333,13 @@ const slicedArray = array.slice(0, 2)
 // slicedArray = [1, 2]
 ```
 <br/>
+
 **concat()**
 <br/>
 *concat* method will create a new array containing all the elements in the original array followed by the each of the arrays that are passed in. This method will not mutate the original array.
 <br/>
 *Note:* You can pass in more than one array as arguments.
+
 ```js
 const array = [1, 2, 3, 4]
 const concatArray = array.concat([5, 6, 7, 8])
@@ -1346,6 +1347,7 @@ const concatArray = array.concat([5, 6, 7, 8])
 // concatArray = [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 <br/>
+
 **toString()**
 <br/>
 ```js
@@ -1355,6 +1357,7 @@ lang.toString();
 PHP, Python, Java, C
 ```
 <br/>
+
 **splice()**
 <br/>
 The javascript *splice()* method is used to add and remove items from an array.
