@@ -1374,3 +1374,5 @@ lang.splice(1, 0, "Javascript", "Rust");
 // Output
 new array: Python, Javascript, Rust, Java, C
 ```
+## JS Interview Check
+![js-intterview](https://js-interview.com/content/images/2020/06/javascript-interview-preparation-checklist.png)
