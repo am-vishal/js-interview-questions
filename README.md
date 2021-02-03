@@ -1374,5 +1374,24 @@ lang.splice(1, 0, "Javascript", "Rust");
 // Output
 new array: Python, Javascript, Rust, Java, C
 ```
+## Shorten an array
+You can set the length property to shorten an array.
+
+```js
+	var numbers = [1,2,3,4,5];
+	number.length =  3;
+	console.log(numbers);
+	
+	//Output:
+	Array(3) [1,2,3]
+```
+## Remove duplicate elements from an array:
+```js
+	const myArr = [1,2,3,4,4,5,4,3,5]
+	console.log([...new Set(myArr)])
+	//Output:
+	[1,2,3,4,5] //will remove duplicate ele from array.
+```
+
 ## JS Interview Check
 ![js-intterview](https://js-interview.com/content/images/2020/06/javascript-interview-preparation-checklist.png)
