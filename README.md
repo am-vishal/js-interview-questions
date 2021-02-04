@@ -1392,6 +1392,46 @@ You can set the length property to shorten an array.
 	//Output:
 	[1,2,3,4,5] //will remove duplicate ele from array.
 ```
+## *this* keyword
+![js-this](https://infografia-api.s3.us-east-2.amazonaws.com/javascript_2_41404b0d0f.jpg)
+'this' keyword in JavaScript refers to the Object or Scope it belongs to, or form where it is being called.
+It can have different value, depending on where it its used in code.
+
+```js
+	console.log(this)
+	//Output:
+	Window {0: global, window: Window, self: Window, document: document, name: "", location: Location, …}
+```
+Inside a function, *this* refers to the global object
+
+```js
+	function normalFunction() {
+		console.log(this);
+	}
+	normalFunction();
+	//Output:
+	Window {0: global, window: Window, self: Window, document: document, name: "", location: Location, …}
+```
+Inside a method, *this* refers to the 'owner object of the method.
+```js
+	const obj = {
+		method(){
+			console.log(this);
+			}
+		 }
+		obj.method();
+	//Output:
+	{method: ƒ}method: ƒ method()arguments: (...)caller: (...)length: 0name: "method"__proto__: ƒ ()[[FunctionLocation]]: VM492:2[[Scopes]]: Scopes[2]__proto__: Object
+```
+Inside a function (with strict mode), *this* is undefined.
+```js
+	"use strict"
+	function normalFunction(){
+		console.log(this);
+	    }
+	    normalFunction();
+	    //undefined
+```
 
 ## JS Interview Check
 ![js-intterview](https://js-interview.com/content/images/2020/06/javascript-interview-preparation-checklist.png)
