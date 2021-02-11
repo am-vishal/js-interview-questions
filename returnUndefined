@@ -1,0 +1,7 @@
+const test = () => {
+ return //if bracket not start from here then it will return undefined
+ { //include this bracket just after retrun
+  ok : true
+ }
+}
+console.log(test())
