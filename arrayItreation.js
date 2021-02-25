@@ -21,3 +21,20 @@ for(let elements of arr){
 //Example:4
 const arr = ["a", "b", "c"];
 arr.forEach(ele => console.log(ele));
+
+//Example:5
+const arr = ["a", "b", "c"];
+let index = 0;
+while (index < arr.length) { 
+    console.log(arr[index]); 
+    index++; 
+}
+
+//Example:6
+const arr = ["1", "2", "3"];
+let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < arr.length);
+
