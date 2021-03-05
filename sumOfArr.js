@@ -23,11 +23,21 @@ function sumArray(array) {
 }
 
 //Example:4
+function aVeryBigSum(ar) {
+let totalSum = 0;
+for(let i=0; i<ar.length;i++) {
+    totalSum += ar[i];
+     }
+  return totalSum;
+}
+aVeryBigSum([101101,1021021,10310321,104014,101010])
+
+//Example:5
 let arr=[1,2,3];
 let i = arr.length;
 let sum = 0;
 while (--i) sum += arr[i];
 
-//Example:5 || Worst Approch
+//Example:6 || Worst Approch
 eval([1,2,3,"4"].join("+"))
 //Output:10
