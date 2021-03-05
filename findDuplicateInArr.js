@@ -10,3 +10,8 @@
 console.log(results);
 
 //Output: [1, 2]
+
+const arr = [1,2,3,4,4,7,5,6,4,5,6];
+console.log([...new Set(arr)])
+
+//Output: [ 1, 2, 3, 4, 7, 5, 6 ]
